@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+        <title>rockpaperscissor</title>
+    </head>
+    <body>
+        <p id='test'></p>
+        
+        <script>
+            var a = computerPlay();
+            document.getElementById('test').innerHTML = a;
+            
+            function computerPlay(){
+                let num = Math.round(Math.random()*100);
+                console.log(num);
+                if(num<=33)
+                    return 'rock';
+                else if (num<=67)
+                    return 'paper';
+                else
+                    return 'scissor';
+            }
+        </script>
+    </body>
+</html>

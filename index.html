@@ -3,25 +3,89 @@
     <head>
     <meta charset="utf-8">
         <title>rockpaperscissor</title>
-    </head>
-    <body>
-        <p id='test'></p>
-       
-        
         <script>
-            var a = computerPlay();
-            document.getElementById('test').innerHTML = a;
+            let play = true;
             
-            function computerPlay(){
-                let num = Math.round(Math.random()*100);
-                console.log(num);
-                if(num<=33)
-                    return 'rock';
-                else if (num<=67)
-                    return 'paper';
-                else
-                    return 'scissor';
+            while(play){
+                let computer = computerPlay();
+                let user = playerSelection();
+
+                console.log(computer);
+                console.log(user);
+
+                game(computer, user);
+                
+                                    
+                function playAgain(){
+                    let response = prompt('Keep Playing y/n?');
+                    if (response == 'n')
+                        return play=false;
+                    else
+                        return;
+                }
+                
+                function computerPlay(){
+                    let num = Math.round(Math.random()*100);
+
+                    //console.log(num);
+
+                    if(num<=33)
+                        return 'Rock';
+                    else if (num<=67)
+                        return 'Paper';
+                    else
+                        return 'Scissor';
+                }
+
+                function playerSelection(){
+                    let response = prompt('Please enter rock, paper, or scissor:');
+                    return response;
+                }
+
+                function game(computer, user){
+                    computer = computer.toUpperCase();
+                    console.log(computer);
+                    user = user.toUpperCase();
+                    console.log(user);
+
+                    switch (user){
+                        case 'ROCK':
+                            if(computer=='PAPER')
+                                console.log('Computer Wins!');
+                            else if(computer == 'SCISSOR')
+                                console.log('User Wins!');
+                            else
+                                console.log('Tie!');
+                            break;
+
+                        case 'PAPER':
+                            if(computer=='PAPER')
+                                console.log('Tie!');
+                            else if(computer == 'SCISSOR')
+                                console.log('Computer Wins!');
+                            else
+                                console.log('User Wins!');
+                            break;
+
+                        case 'SCISSOR':
+                            if(computer=='PAPER')
+                                console.log('User Wins!');
+                            else if(computer == 'SCISSOR')
+                                console.log('Tie!');
+                            else
+                                console.log('Computer Wins!');
+                            break;
+
+                        default:
+                            console.log('User must enter either rock, paper, or scissor.');
+                            break;
+                    }    
+                }
+                
+                playAgain();
             }
         </script>
+    </head>
+    <body> 
     </body>
 </html>
